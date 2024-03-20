@@ -41,7 +41,27 @@ class Planets(Base):
 class FavouritePlanets(Base):
     __tablename__= 'favorite_planets'
     ID = Column(Integer, primary_key=True)
-    user_ID = Column
+    user_ID = Column(Integer, ForeignKey('user.ID'))
+    user_relationship = relationship(User)
+    planets_id = Column(Integer, ForeignKey('planets.ID'))
+    planets_relationship = relationship(Planets)
+
+class VehiclesStarships(Base):
+    __tablename__='vehicles_starships'
+    ID = Column(Integer, primary_key=True)
+    name = Column(String(25))
+    type = Column(String(25))
+    car_licence = Column(Integer)
+
+class FavouriteVehiclesStarships(Base):
+    __tablename__= 'favourite_vehicles_startships'
+    ID = Column(Integer, primary_key=True)
+    user_ID = Column(Integer, ForeignKey('user.ID'))
+    user_relationship = relationship(User)
+    vehicles_staships_id = Column(Integer, ForeignKey('vehicles_starships.ID'))
+    vehicles_staships_relationship = relationship(VehiclesStarships)
+    
+
 
 # class Country(Base):
 #     __tablename__ = 'country'
